@@ -12,5 +12,7 @@ public List<Users> findAll() throws DataAccessException;
 	
 
 	public Users findOne(Integer codigo) throws DataAccessException;
+
+	Users findUser(String name, String pass) throws DataAccessException;
 	
 }

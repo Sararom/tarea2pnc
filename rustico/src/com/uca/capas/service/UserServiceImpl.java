@@ -22,6 +22,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public Users findUser(String name, String pass) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return userRepository.findByUserNameAndPass(name,pass);
+	}
+
+	@Override
 	public Users findOne(Integer codigo) throws DataAccessException {
 		// TODO Auto-generated method stub
 		return userRepository.getOne(codigo);
