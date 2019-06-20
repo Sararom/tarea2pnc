@@ -3,6 +3,7 @@ package com.uca.capas.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,12 +35,12 @@ public class Sucursal {
 	private String horarios;
 	
 	@Column(name="n_mesas")
-	private String numMesas;
+	private Integer numMesas;
 	
 	@Column(name="nomb_ger")
 	private String nomGer;
 	
-	@OneToMany(mappedBy="sucursal", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="sucursal",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Empleado> empleados;
 	
 	public Sucursal() {}
@@ -78,11 +79,11 @@ public class Sucursal {
 		this.horarios = horarios;
 	}
 
-	public String getNumMesas() {
+	public Integer getNumMesas() {
 		return numMesas;
 	}
 
-	public void setNumMesas(String numMesas) {
+	public void setNumMesas(Integer numMesas) {
 		this.numMesas = numMesas;
 	}
 

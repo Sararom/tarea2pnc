@@ -6,41 +6,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SpringJPA</title>
+<title>Sucursales Rustico</title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/search" method = "post">
-	<label>Busqueda por codigo: </label><input type="number" placeholder="Ingrese codigo" name="code">
-	<input type="submit" value="Enviar">
-	</form>
-	
 	<form action="${pageContext.request.contextPath}/save" method = "post">
-	<input type="submit" value="Agregar un nuevo usuario">
-	</form>
-	
-	<form action="${pageContext.request.contextPath}/searchBy" method="post">
-	<input type="text" name="name" placeholder="Ingrese el nombre: ">
-	<input type="number" name="age" placeholder="Ingrese la edad: ">
-	<button type="submit">Buscar</button>
+	<input type="submit" value="Agregar una sucursal nueva">
 	</form>
 
 	<table>
 		<tr>
-			<th>Name</th>
-			<th>Last Name</th>
-			<th>Age</th>
-			<th>Status</th>
+			<th>Nombre</th>
+			<th>Ubicacion</th>
+			<th>Horario</th>
+			<th>Numero de mesas</th>
+			<th>Gerente</th>
 		</tr>
-			<c:forEach items="${students}" var="students">
+			<c:forEach items="${sucursales}" var="sucursales">
 				<tr>
-					<td>${students.sName}</td>
-					<td>${students.lName}</td>
-					<td>${students.sAge}</td>
-					<td>${students.activoDelegate}</td>
+					<td>${sucursales.sucName}</td>
+					<td>${sucursales.ubic}</td>
+					<td>${sucursales.horarios}</td>
+					<td>${sucursales.numMesas}</td>
+					<td>${sucursales.nomGer}</td>
 					<td>
 					<form action="${pageContext.request.contextPath}/update" method="post">
-						<input type="hidden" value="${students.cStudent}" name="code">
-						<input type="submit">
+						<input type="hidden" value="${sucursales.cSuc}" name="code">
+						<input type="submit" value="Editar">
+					</form>
+					<form action="${pageContext.request.contextPath}/delete" method="post">
+						<input type="hidden" value="${sucursales.cSuc}" name="code">
+						<input type="submit" value="Eliminar">
 					</form>
 					</td>
 				</tr>	

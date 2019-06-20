@@ -6,27 +6,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Agregar Sucursal</title>
 </head>
 <body>
-		<form:form  action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="student">
+<h1>Inserte los datos de la sucursal</h1>
+		<form:form  action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursales">
 		
-		<form:input type="hidden" name="code" path="cStudent" value="${student.cStudent}" />
+		<form:input type="hidden" name="code" path="cSuc" value="${sucursales.cSuc}" />
 	
 		<label>Ingrese un nombre : </label>
-		<form:input type="text" name="name" path="sName" value="${student.sName}"/><br>
+		<form:input type="text" name="name" path="sucName" value="${sucursales.sucName}"/><br>
 		
-		<label>Ingrese un apellido : </label>
-		<form:input type="text" name="lname" path="lName" value="${student.lName}"/><br>
+		<label>Ingrese ubicacion : </label>
+		<form:input type="text" name="ubic" path="ubic" value="${sucursales.ubic}"/><br>
 		
-		<label>Ingrese edad : </label>
-		<form:input type="number" name="age" path="sAge" value="${student.sAge}"/><br>
+		<label>Ingrese horarios: </label>
+		<form:input type="text" name="horarios" path="horarios" value="${sucursales.horarios}"/><br>
 		
-		<Label>Estado del estudiante</Label><br>
-		<form:radiobutton name="status" path="bActivo" value="true"/><label>Activo</label><br>
-		<form:radiobutton name="status" path="bActivo" value="false"/><label>Inactivo</label><br>
+		<label>Ingrese numero de mesas: </label>
+		<form:input type="number" name="numMesas" path="numMesas" value="${sucursales.numMesas}"/><br>
+		
+		<label>Ingrese nombre del gerente: </label>
+		<form:input type="text" name="nombGer" path="nomGer" value="${sucursales.nomGer}"/><br>
 			
-		<input type="submit" value="Agregar estudiante">
+		<input type="submit" value="Actualizar">
 	</form:form>
 </body>
 </html>
