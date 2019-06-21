@@ -3,9 +3,12 @@ package com.uca.capas.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,8 @@ import javax.persistence.Table;
 
 public class Empleado {
 	@Id
+	@GeneratedValue(generator="empleado_codigo_emp_seq",strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="empleado_codigo_emp_seq",sequenceName="public.empleado_codigo_emp_seq",allocationSize = 1)
 	@Column(name="codigo_emp")
 	private Integer idEmp;
 	

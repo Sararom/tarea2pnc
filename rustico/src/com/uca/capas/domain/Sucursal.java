@@ -40,7 +40,7 @@ public class Sucursal {
 	@Column(name="nomb_ger")
 	private String nomGer;
 	
-	@OneToMany(mappedBy="sucursal",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="sucursal",cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE},fetch=FetchType.EAGER)
 	private List<Empleado> empleados;
 	
 	public Sucursal() {}

@@ -15,11 +15,11 @@
 
 	<table>
 		<tr>
-			<th>Nombre</th>
-			<th>Ubicacion</th>
-			<th>Horario</th>
-			<th>Numero de mesas</th>
-			<th>Gerente</th>
+			<th>Nombre Sucursal</th>
+			<th>Ubicacion </th>
+			<th>Horario </th>
+			<th>Numero de mesas </th>
+			<th>Gerente </th>
 		</tr>
 			<c:forEach items="${sucursales}" var="sucursales">
 				<tr>
@@ -36,6 +36,10 @@
 					<form action="${pageContext.request.contextPath}/delete" method="post">
 						<input type="hidden" value="${sucursales.cSuc}" name="code">
 						<input type="submit" value="Eliminar">
+					</form>
+					<form action="${pageContext.request.contextPath}/profile" method="get">
+						<input type="hidden" value="${sucursales.cSuc}" name="code">
+						<input type="submit" value="Ver Perfil">
 					</form>
 					</td>
 				</tr>	
