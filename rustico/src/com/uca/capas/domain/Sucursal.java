@@ -13,6 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(schema="public",name="sucursal")
@@ -26,18 +30,24 @@ public class Sucursal {
 	private Integer cSuc;
 	
 	@Column(name="nombre_suc")
+	@NotEmpty(message="Este campo no puede estar vacio")
 	private String sucName;
 	
 	@Column(name="ubicacion")
+	@NotEmpty(message="Este campo no puede estar vacio")
 	private String ubic;
 	
 	@Column(name="horarios")
+	@NotEmpty(message="Este campo no puede estar vacio")
 	private String horarios;
 	
 	@Column(name="n_mesas")
+	@NotNull(message = "Campo requerido")
+	@Positive(message="El numero de mesas no puede ser negativo")
 	private Integer numMesas;
 	
 	@Column(name="nomb_ger")
+	@NotEmpty(message="Este campo no puede estar vacio")
 	private String nomGer;
 	
 	@OneToMany(mappedBy="sucursal",cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE},fetch=FetchType.EAGER)

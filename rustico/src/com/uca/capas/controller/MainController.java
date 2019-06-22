@@ -5,9 +5,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -96,26 +98,38 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/formData")
-	public ModelAndView save(@ModelAttribute Sucursal s) {
+	public ModelAndView save(@Valid @ModelAttribute("sucursales") Sucursal s,BindingResult result) {
 		ModelAndView mav = new ModelAndView();
-		List<Sucursal> sucursales = null;
-		sucServ.save(s);
-		sucursales = sucServ.findAll();
-		mav.addObject("sucursales",sucursales);
-		mav.setViewName("main");
+		if(result.hasErrors()) {
+			mav.setViewName("form");
+		}
+		else {
+			List<Sucursal> sucursales = null;
+			sucServ.save(s);
+			sucursales = sucServ.findAll();
+			mav.addObject("sucursales",sucursales);
+			mav.setViewName("main");
+		}
 		return mav;
 		
 	}
 	
 	@RequestMapping(value="/formDataEmp")
-	public ModelAndView save(@ModelAttribute Empleado s, @RequestParam(value="codeSuc") Integer codeSuc) {
+	public ModelAndView save(@Valid @ModelAttribute("empleado") Empleado s,
+			BindingResult result,
+			@RequestParam(name = "codeSuc", required = true, value="codeSuc") Integer codeSuc) {
 		ModelAndView mav = new ModelAndView();
-		Sucursal suc = new Sucursal();
-		suc = sucServ.findOne(codeSuc);
+		Sucursal suc = sucServ.findOneGetOne(codeSuc);
 		s.setSucursal(suc);
-		empServ.save(s);
-		mav.addObject("code", codeSuc);
-		mav.setViewName("redirect:/profile/");
+		if(result.hasErrors()) {
+			mav.addObject("code", codeSuc);
+			mav.setViewName("formEmp");
+		}
+		else {
+			empServ.save(s);
+			mav.addObject("code", codeSuc);
+			mav.setViewName("redirect:/profile/");
+		}
 		return mav;
 		
 	}

@@ -21,19 +21,20 @@
 		<input  type="hidden" name="codeSuc" value="${codigoSuc}" />
 		
 		<label>Ingrese un nombre : </label>
-		<form:input class="form-control mb-4" type="text" name="name" path="nomEmp" value="${empleado.nomEmp}"/><br>
-		
+		<form:input class="form-control" type="text" name="name" path="nomEmp" value="${empleado.nomEmp}"/>
+		<form:errors path="nomEmp" cssStyle="color:#E81505"></form:errors><br>
 		<label>Ingrese edad : </label>
-		<form:input class="form-control mb-4" type="number" name="edad" path="edad" value="${empleado.edad}"/><br>
-		
+		<form:input class="form-control" type="number" name="edad" path="edad" value="${empleado.edad}"/>
+		<form:errors path="edad" cssStyle="color:#E81505"></form:errors><br>
 		<label>Genero: </label>
 		<form:radiobutton name="genero" path="genero" value="F"/><label>F</label>
 		<form:radiobutton name="genero" path="genero" value="M"/><label>M</label><br>
-		
+		<form:errors path="genero" cssStyle="color:#E81505"></form:errors><br>
 		<label>Estado: </label>
 		<form:radiobutton name="estado" path="estado" value="true"/><label>Activo</label>
-		<form:radiobutton name="estado" path="estado" value="false"/><label>Inactivo</label><br>
-			
+		<form:radiobutton name="estado" path="estado" value="false"/><label>Inactivo</label>
+		<form:errors path="estado" cssStyle="color:#E81505"></form:errors><br>
+		
 		<input class="btn btn-info my-4 btn-block" type="submit" value="Actualizar">
 	</form:form>
 </body>

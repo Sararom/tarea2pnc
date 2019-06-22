@@ -10,7 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
+import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table (schema="public",name="empleado")
 
@@ -22,15 +25,20 @@ public class Empleado {
 	private Integer idEmp;
 	
 	@Column(name="nomb_emp")
+	@NotEmpty(message="Este campo no puede estar vacio")
 	private String nomEmp;
 	
 	@Column(name="edad")
+	@NotNull(message = "Campo requerido")
+	@Positive(message="La edad no puede ser negativa")
 	private Integer edad;
 	
 	@Column(name="genero")
+	@NotNull(message = "Campo requerido")
 	private String genero;
 	
 	@Column(name="estado")
+	@NotNull(message = "Campo requerido")
 	private Boolean estado;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
