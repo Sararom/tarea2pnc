@@ -5,12 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Perfil</title>
 </head>
 <body>
-	<table>
-		<tr>
+<h1 class="display-4"> Datos de la sucursal</h1>
+<button 
+class="btn btn-outline-info" style="
+  	font-size: 150%;" onclick="location.href='${pageContext.request.contextPath}/principal'" value="Home">HOME</button>
+	<table class="table table-hover">
+		<tr class="table-light bg-info">
 			<th>Nombre Sucursal</th>
 			<th>Ubicacion </th>
 			<th>Horario de atención </th>
@@ -26,21 +31,26 @@
 					<td>
 					<form action="${pageContext.request.contextPath}/update" method="post">
 						<input type="hidden" value="${sucursales.cSuc}" name="code">
-						<input type="submit" value="Editar">
+						<input class="btn btn-outline-info" type="submit" value="Editar">
 					</form>
+					</td>
+					<td>
 					<form action="${pageContext.request.contextPath}/delete" method="post">
 						<input type="hidden" value="${sucursales.cSuc}" name="code">
-						<input type="submit" value="Eliminar">
+						<input class="btn btn-outline-info" type="submit" value="Eliminar">
 					</form>
+					</td>
+					<td>
 					<form action="${pageContext.request.contextPath}/addEmp" method="post">
 						<input type="hidden" value="${sucursales.cSuc}" name="code">
-						<input type="submit" value="Agregar Empleado">
+						<input class="btn btn-outline-info" type="submit" value="Agregar Empleado">
 					</form>
 					</td>
 				</tr>	
 	</table>
-	<table>
-		<tr>
+	<h1 class="display-4">Datos de los empleados</h1>
+	<table class="table table-hover">
+		<tr class="table-light bg-info">
 			<th>Nombre Empleado</th>
 			<th>Edad </th>
 			<th>Genero </th>
@@ -56,12 +66,14 @@
 					<form action="${pageContext.request.contextPath}/updateEmp" method="post">
 						<input type="hidden" value="${sucursales.cSuc}" name="code">
 						<input type="hidden" value="${empleados.idEmp}" name="codeEmp">
-						<input type="submit" value="Editar">
+						<input class="btn btn-outline-dark" type="submit" value="Editar">
 					</form>
+					</td>
+					<td>
 					<form action="${pageContext.request.contextPath}/deleteEmp" method="post">
 						<input type="hidden" value="${sucursales.cSuc}" name="code">
 						<input type="hidden" value="${empleados.idEmp}" name="codeEmp">
-						<input type="submit" value="Eliminar">
+						<input class="btn btn-outline-dark" type="submit" value="Eliminar">
 					</form>
 					</td>
 				</tr>	

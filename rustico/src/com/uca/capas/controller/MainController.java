@@ -113,9 +113,6 @@ public class MainController {
 		Sucursal suc = new Sucursal();
 		suc = sucServ.findOne(codeSuc);
 		s.setSucursal(suc);
-		if(s.getActivoDelegate().isBlank()) {
-			s.setEstado(false);
-		}else{s.setEstado(true);}
 		empServ.save(s);
 		mav.addObject("code", codeSuc);
 		mav.setViewName("redirect:/profile/");

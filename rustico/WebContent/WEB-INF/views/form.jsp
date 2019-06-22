@@ -6,30 +6,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Agregar Sucursal</title>
 </head>
-<body>
-<h1>Inserte los datos de la sucursal</h1>
-		<form:form  action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursales">
+<body style="text-align: center">
+<h1 >Inserte los datos de la sucursal</h1>
+<button 
+class="btn btn-outline-info" style="
+  	font-size: 150%;" onclick="location.href='${pageContext.request.contextPath}/principal'" value="Home">HOME</button>
+		<form:form class="text-center border border-light p-5" action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="sucursales">
 		
 		<form:input type="hidden" name="code" path="cSuc" value="${sucursales.cSuc}" />
 	
 		<label>Ingrese un nombre : </label>
-		<form:input type="text" name="name" path="sucName" value="${sucursales.sucName}"/><br>
+		<form:input class="form-control mb-4" type="text" name="name" path="sucName" value="${sucursales.sucName}"/><br>
 		
 		<label>Ingrese ubicacion : </label>
-		<form:input type="text" name="ubic" path="ubic" value="${sucursales.ubic}"/><br>
+		<form:input class="form-control mb-4" type="text" name="ubic" path="ubic" value="${sucursales.ubic}"/><br>
 		
 		<label>Ingrese horarios: </label>
-		<form:input type="text" name="horarios" path="horarios" value="${sucursales.horarios}"/><br>
+		<form:input placeholder="p.e: 8AM - 10PM" class="form-control mb-4" type="text" name="horarios" path="horarios" value="${sucursales.horarios}"/><br>
 		
 		<label>Ingrese numero de mesas: </label>
-		<form:input type="number" name="numMesas" path="numMesas" value="${sucursales.numMesas}"/><br>
+		<form:input class="form-control mb-4" type="number" name="numMesas" path="numMesas" value="${sucursales.numMesas}"/><br>
 		
 		<label>Ingrese nombre del gerente: </label>
-		<form:input type="text" name="nombGer" path="nomGer" value="${sucursales.nomGer}"/><br>
+		<form:input class="form-control mb-4" type="text" name="nombGer" path="nomGer" value="${sucursales.nomGer}"/><br>
 			
-		<input type="submit" value="Actualizar">
+		<input class="btn btn-info my-4 btn-block" type="submit" value="Actualizar">
 	</form:form>
+	
 </body>
 </html>
