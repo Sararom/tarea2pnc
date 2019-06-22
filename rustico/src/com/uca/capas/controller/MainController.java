@@ -119,7 +119,7 @@ public class MainController {
 			BindingResult result,
 			@RequestParam(name = "codeSuc", required = true, value="codeSuc") Integer codeSuc) {
 		ModelAndView mav = new ModelAndView();
-		Sucursal suc = sucServ.findOneGetOne(codeSuc);
+		Sucursal suc = sucServ.findOne(codeSuc);
 		s.setSucursal(suc);
 		if(result.hasErrors()) {
 			mav.addObject("code", codeSuc);
